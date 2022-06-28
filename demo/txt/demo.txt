@@ -1,0 +1,9 @@
+SELECT lastname, firstname, subscription.name AS "type d'abonnement", title AS "titre", movie_schedule.date_begin AS "date et heure de scéence"
+FROM membership 
+INNER JOIN user ON membership.id_user = user.id 
+JOIN subscription ON subscription.id = membership.id_subscription 
+JOIN membership_log ON membership_log.id_membership = membership.id 
+JOIN movie_schedule ON movie_schedule.id = membership_log.id_session 
+JOIN movie ON movie.id = movie_schedule.id_movie 
+WHERE firstname = 'Randy'
+AND lastname = 'Black'
